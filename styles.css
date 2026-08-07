@@ -480,6 +480,64 @@ main {
   aspect-ratio: 4 / 5;
 }
 
+.acclaim-section {
+  padding-bottom: 18px;
+}
+
+.acclaim-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--night-line);
+  border-bottom: 1px solid var(--night-line);
+}
+
+.acclaim-quote {
+  position: relative;
+  margin: 0;
+  padding: 34px 34px 38px;
+  min-height: 240px;
+}
+
+.acclaim-quote:nth-child(odd) {
+  border-right: 1px solid var(--night-line);
+}
+
+.acclaim-quote:nth-child(-n + 2) {
+  border-bottom: 1px solid var(--night-line);
+}
+
+.acclaim-quote::before {
+  content: "\201C";
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  font-size: 4.6rem;
+  line-height: 1;
+  color: rgba(244, 236, 225, 0.12);
+}
+
+.acclaim-quote p {
+  position: relative;
+  z-index: 1;
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--night-text);
+}
+
+.acclaim-quote cite {
+  display: block;
+  margin-top: 18px;
+  font-style: normal;
+  font-size: 0.96rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--night-muted);
+}
+
 .contact-section {
   padding-bottom: 8px;
 }
@@ -496,12 +554,14 @@ main {
 }
 
 #clips,
+#acclaim,
 #contact,
 .site-footer {
   color: var(--night-text);
 }
 
 #clips .section-intro h2,
+#acclaim .section-intro h2,
 #contact .section-intro h2,
 #clips .clip-title,
 #contact .text-link,
@@ -514,11 +574,13 @@ main {
 }
 
 #clips .section-label,
+#acclaim .section-label,
 #contact .section-label {
   color: var(--night-accent);
 }
 
 #clips .section-note,
+#acclaim .section-note,
 #contact .section-note,
 #clips .clip-action,
 #clips .carousel-button,
@@ -626,6 +688,23 @@ main {
 
   .clips-grid {
     grid-template-columns: 1fr;
+  }
+
+  .acclaim-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .acclaim-quote {
+    min-height: auto;
+  }
+
+  .acclaim-quote:nth-child(odd) {
+    border-right: 0;
+  }
+
+  .acclaim-quote:nth-child(-n + 2),
+  .acclaim-quote:nth-child(3) {
+    border-bottom: 1px solid var(--night-line);
   }
 
   .carousel-track {
