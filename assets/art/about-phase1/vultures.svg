@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="600" height="260" viewBox="0 0 600 260">
+  <title>Three distant soaring vultures</title>
+  <g id="vultures" inkscape:groupmode="layer" inkscape:label="Three independently editable flight poses" fill="#20211d">
+    <g id="vulture-1" inkscape:groupmode="layer" inkscape:label="Organic feathered silhouette" fill="#20211d" transform="translate(16 30) rotate(7 64 29) scale(.83)">
+      <path d="M57 33C49 29 40 23 29 17L13 8L7 3L8 9L3 5L6 12L2 10L6 17L3 16C10 23 21 28 32 31C41 35 47 39 52 43L55 49L58 47L62 50L64 46L67 48L68 43C78 39 90 35 103 31L117 25L125 19L119 20L125 14L118 17L122 10L115 15L117 9L106 18C93 23 81 28 69 31L65 28L65 23Q63 19 60 21L58 25L59 29Z" />
+    </g>
+    <g id="vulture-2" inkscape:groupmode="layer" inkscape:label="Organic feathered silhouette" fill="#20211d" transform="translate(382 49) rotate(-8 64 29) scale(.68)">
+      <path d="M55 36C45 32 36 29 26 28L12 27L3 24L6 28L1 28L6 32L2 33L12 36L20 35C31 35 43 39 50 44L51 50L55 49L58 52L61 49L65 51L65 45C75 42 85 39 94 31L105 20L114 8L116 1L112 5L112 0L108 7L108 2L104 12C97 21 86 27 76 30L67 34L63 30L63 26Q60 22 58 26L57 32Z" />
+    </g>
+    <g id="vulture-3" inkscape:groupmode="layer" inkscape:label="Organic feathered silhouette" fill="#20211d" transform="translate(243 173) rotate(8 64 29) scale(.63)">
+      <path d="M57 41C48 35 43 29 39 23L32 12L29 4L27 0L27 7L23 1L24 9L20 4L22 14L25 20C32 31 39 40 50 46L51 52L55 51L58 55L62 52L65 54L66 47C78 43 90 40 103 39L116 39L123 35L117 34L124 31L117 30L122 27L115 27L105 31C91 33 80 33 69 37L64 34L64 30Q61 27 59 31L59 36Z" />
+    </g>
+  </g>
+</svg>

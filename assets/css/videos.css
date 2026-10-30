@@ -1,0 +1,64 @@
+/* Videos only. Approved artwork and the shared shell remain unchanged. */
+.page-videos .videos-section { min-height: 760px; padding: 0; }
+.page-videos .videos-copy { position: relative; z-index: 5; width: 25%; margin: 52px 0 0 7%; }
+.page-videos .section-title { margin-bottom: 48px; font-size: clamp(76px, 7vw, 112px); }
+.page-videos .videos-intro { max-width: 29ch; margin: 0 0 20px; font-size: clamp(16px, 1.2vw, 19px); line-height: 1.8; }
+.page-videos .videos-more { font-size: 12px; margin-left: 5vw; }
+.page-videos .videos-scene { --terrain-height: calc(min(100vw, 1600px) / 3); position: absolute; inset: 0 0 28px; container-type: size; pointer-events: none; }
+.page-videos .drive-in-sun { z-index: 0; top: 4%; left: 63%; width: 29%; height: auto; aspect-ratio: 1; }
+.page-videos .drive-in-terrain { position: absolute; z-index: 1; width: 100%; height: auto; bottom: 0; left: 0; }
+.page-videos .drive-in-billboard { position: absolute; z-index: 3; left: 27%; bottom: calc(var(--terrain-height) * .20); width: min(54%, calc((100cqh - var(--terrain-height) * .20 - 38px) * 1.5)); aspect-ratio: 3 / 2; isolation: isolate; }
+.page-videos .drive-in-frame { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+/* One coordinate system, 1536 x 1024: visual thumbnails below the art, hit targets above. */
+.page-videos :is(.screen-picture, .screen-link) { position: absolute; display: block; margin: 0; }
+.page-videos .screen-picture { z-index: 1; overflow: hidden; background: var(--ink); }
+.page-videos .screen-picture img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; filter: grayscale(1) contrast(1.1); }
+.page-videos .screen-link { z-index: 3; pointer-events: auto; color: var(--paper); }
+.page-videos .screen-slot-0 { left: 17.32%; top: 16.89%; width: 51.17%; height: 56.15%; clip-path: polygon(0 0, 99.4% 10.5%, 100% 100%, 0 96%); }
+.page-videos .screen-slot-1 { left: 70.44%; top: 23.73%; width: 20.05%; height: 17.19%; clip-path: polygon(0 0, 99% 13%, 100% 100%, 0 88%); }
+.page-videos .screen-slot-2 { left: 70.70%; top: 41.99%; width: 19.99%; height: 16.02%; clip-path: polygon(0 0, 99% 12%, 100% 100%, 0 88%); }
+.page-videos .screen-slot-3 { left: 70.77%; top: 59.08%; width: 20.12%; height: 14.55%; clip-path: polygon(0 0, 99% 11%, 100% 100%, 0 93%); }
+.page-videos .screen-play { position: absolute; top: 52%; left: 50%; display: grid; place-items: center; width: clamp(22px, 3cqw, 48px); aspect-ratio: 1; border: 1px solid var(--paper); border-radius: 50%; background: rgb(24 26 22 / .78); transform: translate(-50%, -50%); }
+.page-videos .screen-slot-0 .screen-play { width: clamp(32px, 4.7cqw, 70px); }
+.page-videos .screen-play::before { content: ''; width: 33%; height: 40%; margin-left: 7%; background: currentColor; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.page-videos .screen-link:is(:hover, :focus-visible) .screen-play { background: var(--red); outline: 3px solid var(--paper); outline-offset: 3px; }
+.page-videos .screen-link:focus-visible { outline: none; }
+.page-videos .drive-in-foreground { z-index: 4; clip-path: inset(60% 0 0); }
+.page-videos .drive-in-perch { position: absolute; z-index: 5; width: 18%; right: .5%; bottom: 10px; aspect-ratio: 2 / 3; }
+.page-videos .drive-in-projector { display: block; width: 100%; height: auto; }
+.page-videos .drive-in-catcat { position: absolute; top: -3.125%; left: 10%; width: 48.4375%; max-width: none; height: auto; transform: rotate(5deg); transform-origin: 15% 96%; }
+.page-videos .drive-in-vultures { position: absolute; z-index: 1; top: 8%; right: 2%; width: 14%; height: auto; }
+.page-videos .section-folio { bottom: 0; left: 0; width: 100%; min-height: 28px; padding: 7px 7%; background: var(--ink); }
+.page-videos .videos-pagination { position: absolute; z-index: 6; left: 7%; top: 350px; width: 23%; display: flex; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 12px; }
+.page-videos .videos-pagination[hidden] { display: none; }
+.page-videos .videos-pagination button { min-height: 44px; border: 1px solid var(--rule); padding: 6px 10px; background: var(--paper); cursor: pointer; }
+.page-videos .videos-pagination button:disabled { opacity: .45; cursor: default; }
+.page-videos .videos-mobile-links { display: none; }
+@media (min-width: 901px) and (min-height: 768px) {
+  .page-videos .videos-section { flex: none; height: 100%; min-height: 0; }
+}
+@media (min-width: 901px) and (max-height: 850px) {
+  .page-videos .videos-copy { margin-top: 32px; }
+  .page-videos .section-title { margin-bottom: 36px; }
+  .page-videos .videos-pagination { top: 305px; }
+}
+@media (max-width: 900px) {
+  .page-videos .videos-section { min-height: 0; padding: 35px 24px 55px; }
+  .page-videos .videos-copy { width: auto; margin: 0; }
+  .page-videos .videos-more { margin-left: 0; }
+  .page-videos .section-title { font-size: clamp(64px, 14vw, 96px); margin-bottom: 36px; }
+  .page-videos .videos-intro { max-width: 35ch; font-size: 16px; margin-bottom: 8px; }
+  .page-videos .videos-scene { position: relative; inset: auto; width: calc(100% + 48px); margin: 25px -24px 0; height: auto; aspect-ratio: .85; }
+  .page-videos .drive-in-billboard { width: 100%; left: 0; top: 35px; bottom: auto; }
+  .page-videos .drive-in-sun { width: 55%; top: 0; left: 46%; }
+  .page-videos .drive-in-terrain { width: 300%; max-width: none; left: -100%; }
+  .page-videos .drive-in-perch { width: 36%; right: 0; bottom: 0; }
+  .page-videos .drive-in-vultures { top: 0; right: 3%; width: 20%; }
+  .page-videos .videos-mobile-links { display: grid; gap: 5px; margin: 20px 0 0; }
+  .page-videos .videos-mobile-links a { display: flex; align-items: center; min-height: 44px; font-size: 14px; color: var(--ink); text-underline-offset: 4px; }
+  .page-videos .videos-pagination { position: relative; left: auto; top: auto; width: auto; margin-top: 20px; }
+}
+
+
+
+

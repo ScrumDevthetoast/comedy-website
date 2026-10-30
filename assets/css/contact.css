@@ -1,0 +1,53 @@
+/* Contact-only assembly. All approved illustration pixels and vectors stay unchanged. */
+.page-contact .contact-section { min-height: 760px; padding: 52px 7% 70px; }
+.page-contact .contact-content { position: relative; z-index: 3; width: 49%; max-width: 650px; }
+.page-contact .section-title { margin-bottom: 48px; font-size: clamp(80px, 7.4vw, 118px); }
+.page-contact .contact-intro { max-width: none; margin-bottom: 24px; font-size: clamp(16px, 1.2vw, 19px); line-height: 1.8; }
+.page-contact .contact-row { display: grid; grid-template-columns: 94px minmax(0,1fr); gap: 16px; width: fit-content; max-width: 100%; min-height: 44px; margin: 0; }
+.page-contact .contact-row strong { font-size: 16px; font-weight: bold; text-transform: none; }
+.page-contact .contact-row > span { min-width: 0; font-size: 16px; overflow-wrap: anywhere; }
+.page-contact .contact-row:hover { text-decoration: underline; text-underline-offset: 4px; }
+.page-contact .contact-scene { --terrain-height: calc(min(100vw, 1600px) / 3); position: absolute; inset: 0 0 28px; pointer-events: none; }
+.page-contact .contact-horizon-sun { z-index: 0; left: 35%; bottom: calc(var(--terrain-height) * .12); width: 32%; height: auto; aspect-ratio: 1; }
+.page-contact .contact-terrain-art { position: absolute; z-index: 1; bottom: 0; left: 0; width: 100%; height: auto; transform: translateY(2.2%); }
+/* The 790 x 570 review group keeps the animal, mouth, flap and ground in one coordinate system. */
+.page-contact .contact-mail-scene { position: absolute; z-index: 2; width: min(54%, 800px); aspect-ratio: 79 / 57; right: 4%; bottom: 25px; }
+.page-contact :is(.contact-mailbox-art, .contact-mailbox-rim) { position: absolute; top: 0; left: 27.8481%; width: 72.1519%; max-width: none; height: auto; }
+.page-contact .contact-mailbox-art { z-index: 0; }
+.page-contact .contact-catcat-art { position: absolute; z-index: 1; top: 25.4386%; left: 0; width: 68.3544%; max-width: none; height: auto; }
+/* Foreground lip from the SAME image: the opaque cavity remains behind Catcat.
+   Threshold only: the torso must cover the vertical lip as it spills out of the mouth. */
+.page-contact .contact-mailbox-rim { z-index: 2; clip-path: polygon(20.1% 61.4%, 49% 60%, 49.8% 62.5%, 20.1% 65%); }
+.page-contact .contact-vultures-art { position: absolute; z-index: 1; top: 6%; right: 4%; width: 14%; height: auto; }
+.page-contact .contact-tumbleweed-art { position: absolute; z-index: 3; right: 3%; bottom: 1px; width: 9%; height: auto; }
+.page-contact .section-folio { bottom: 0; left: 0; width: 100%; min-height: 28px; padding: 7px 7%; background: var(--ink); }
+@media (min-width: 901px) and (min-height: 768px) {
+  .page-contact .contact-section { flex: none; height: 100%; min-height: 0; }
+}
+@media (min-width: 901px) and (max-height: 850px) {
+  .page-contact .contact-section { padding-top: 32px; }
+  .page-contact .section-title { font-size: 80px; margin-bottom: 24px; }
+  .page-contact .contact-intro { margin-bottom: 8px; }
+}
+@media (min-width: 901px) and (max-width: 1100px) {
+  .page-contact .contact-row { grid-template-columns: 80px minmax(0,1fr); gap: 12px; }
+  .page-contact .contact-row :is(strong,span) { font-size: 14px; }
+  .page-contact .contact-content { width: 51%; }
+}
+@media (max-width: 900px) {
+  .page-contact .contact-section { min-height: 0; padding: 35px 24px 28px; }
+  .page-contact .contact-content { width: 100%; max-width: 650px; margin: 0 auto; }
+  .page-contact .section-title { font-size: clamp(62px, 14vw, 96px); margin-bottom: 36px; }
+  .page-contact .contact-intro { font-size: 16px; max-width: 30ch; margin-bottom: 16px; }
+  .page-contact .contact-row { grid-template-columns: 76px minmax(0,1fr); gap: 12px; width: 100%; }
+  .page-contact .contact-row :is(strong,span) { font-size: 14px; }
+  .page-contact .contact-scene { position: relative; inset: auto; width: calc(100% + 48px); margin: 25px -24px 0; height: auto; aspect-ratio: 1.05; }
+  .page-contact .contact-mail-scene { width: 98%; right: 1%; bottom: 12px; }
+  .page-contact .contact-terrain-art { width: 180%; max-width: none; left: -40%; }
+  .page-contact .contact-horizon-sun { left: 10%; width: 65%; bottom: 10%; }
+  .page-contact .contact-vultures-art { width: 25%; right: 4%; top: 0; }
+  .page-contact .contact-tumbleweed-art { right: 1%; width: 14%; bottom: 0; }
+  .page-contact .section-folio { padding-left: 24px; }
+}
+
+

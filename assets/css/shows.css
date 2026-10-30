@@ -1,0 +1,123 @@
+/* Shows composition within the shared shell; approved artwork files stay untouched. */
+.page-shows .page { display: flex; }
+.page-shows .shows-section {
+  --terrain-height: calc(min(100vw, 1600px) / 3);
+  flex: 1;
+  min-width: 0;
+  min-height: max(760px, calc(100svh - 148px));
+  padding: 52px 5.5% calc(var(--terrain-height) * .68 + 74px) 49%;
+}
+.page-shows .shows-content { z-index: 3; max-width: 700px; }
+.page-shows .section-title { margin-bottom: 46px; transform: rotate(-5deg); }
+.page-shows .shows-art { position: absolute; z-index: 0; inset: 0 0 28px; pointer-events: none; }
+.page-shows .shows-terrain-art { position: absolute; z-index: 0; bottom: 0; left: 0; width: 100%; height: auto; }
+.page-shows .shows-sign-art {
+  position: absolute;
+  z-index: 1;
+  bottom: calc(var(--terrain-height) * .18);
+  left: 6%;
+  width: min(40%, 580px);
+  height: auto;
+  max-height: calc(100% - var(--terrain-height) * .18 - 24px);
+  object-fit: contain;
+  object-position: left bottom;
+}
+.page-shows .shows-catcat-art {
+  position: absolute;
+  z-index: 2;
+  bottom: calc(var(--terrain-height) * .025);
+  right: 1.5%;
+  left: auto;
+  width: min(22%, 350px);
+  height: auto;
+}
+.page-shows .show-poster {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 22px;
+  padding: 24px;
+  transform: rotate(-1.4deg);
+  box-shadow: none;
+}
+.page-shows .show-date {
+  margin: 0;
+  padding: 0 18px 0 0;
+  border: 0;
+  border-right: 1px solid var(--red);
+  font-size: 28px;
+  line-height: 1.15;
+}
+.page-shows .show-copy h2 { margin-bottom: 10px; font-size: 18px; }
+.page-shows .show-copy p { margin-bottom: 12px; font-size: 14px; line-height: 1.65; }
+.page-shows .show-poster .ink-link, .page-shows .show-item .ink-link { font-size: 13px; }
+.page-shows .show-list { margin-top: 18px; }
+.page-shows .show-item {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  column-gap: 22px;
+  margin-bottom: 15px;
+  padding: 20px 24px;
+  border: 1px solid #c9bba1;
+  background: rgba(227, 213, 183, .46);
+  transform: rotate(.7deg);
+}
+.page-shows .show-item:nth-child(even) { transform: rotate(-.6deg); }
+.page-shows .show-item time { grid-row: 1 / 4; margin: 0; padding-right: 18px; border-right: 1px solid var(--red); font: 26px/1.2 var(--poster-font); text-transform: uppercase; }
+.page-shows .show-item h2 { margin: 0 0 6px; font-size: 18px; }
+.page-shows .show-item p { margin: 0 0 6px; font-size: 14px; line-height: 1.65; }
+.page-shows .show-item .ink-link { grid-column: 2; justify-self: start; }
+.page-shows .shows-note { margin-top: 23px; font-size: 20px; }
+.page-shows .section-folio { left: 0; bottom: 0; width: 100%; min-height: 28px; padding: 7px 7%; background: var(--ink); font-size: 9px; }
+
+.shows-pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; font-size: 12px; }
+.shows-pagination button { min-height: 44px; padding: 4px 12px; border: 1px solid var(--rule); background: transparent; cursor: pointer; }
+.shows-pagination button:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+
+@media (min-width: 901px) and (min-height: 768px) {
+  .page-shows .shows-section { flex: none; height: 100%; min-height: 0; padding-bottom: 70px; }
+  .page-shows .shows-content { max-height: calc(100% + 14px); overflow-y: auto; padding: 14px 10px 24px; margin: -14px -10px 0; }
+}
+
+@media (min-width: 901px) and (min-height: 768px) and (max-height: 850px) {
+  .page-shows .shows-section { padding-top: 32px; }
+  .page-shows .section-title { margin-bottom: 24px; }
+  .page-shows .show-poster { padding: 18px; }
+  .page-shows .shows-note { margin-top: 14px; }
+  .page-shows .shows-pagination { float: right; width: 260px; margin-left: 16px; }
+  .page-shows .shows-note { font-size: 18px; }
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .page-shows .shows-section { padding-top: 44px; padding-right: 4%; padding-left: 50%; }
+  .page-shows .section-title { font-size: 80px; }
+  .page-shows .shows-sign-art { left: 3%; width: 45%; }
+  .page-shows .show-poster, .page-shows .show-item { grid-template-columns: 85px minmax(0, 1fr); gap: 16px; padding: 20px; }
+  .page-shows .show-date, .page-shows .show-item time { padding-right: 12px; font-size: 25px; }
+}
+
+@media (max-width: 900px) {
+  .page-shows .shows-section { min-height: 0; padding: 35px 24px max(355px, calc(min(66vw, 300px) * 1.2484 + var(--terrain-height) * .18 + 60px)); }
+  .page-shows .shows-content { max-width: 580px; margin: 0 auto; }
+  .page-shows .section-title { margin-bottom: 40px; font-size: 66px; }
+  .page-shows .show-poster, .page-shows .show-item { grid-template-columns: 82px minmax(0, 1fr); gap: 16px; padding: 20px; }
+  .page-shows .show-date, .page-shows .show-item time { padding-right: 12px; font-size: 25px; }
+  .page-shows .show-copy h2, .page-shows .show-item h2 { font-size: 17px; }
+  .page-shows .show-copy p, .page-shows .show-item p { font-size: 14px; }
+  .page-shows .shows-note { font-size: 18px; }
+  .page-shows .shows-sign-art { left: 6%; bottom: calc(var(--terrain-height) * .18); width: min(66%, 300px); max-height: none; }
+  .page-shows .section-folio { padding-left: 24px; font-size: 8px; }
+}
+
+@media (max-width: 370px) {
+  .page-shows .shows-section { padding-right: 20px; padding-left: 20px; }
+  .page-shows .show-poster, .page-shows .show-item { grid-template-columns: 69px minmax(0, 1fr); gap: 13px; padding: 18px 16px; }
+  .page-shows .show-date, .page-shows .show-item time { font-size: 23px; }
+  .page-shows .section-folio { padding-left: 20px; }
+}
+
+/* Shared sun treatment, aligned to the former landscape sunset. */
+.page-shows .shows-horizon-sun { z-index: 0; left: 20.95%; bottom: calc(var(--terrain-height) * .0953); width: 21.64%; height: auto; aspect-ratio: 1; }
+
+/* Standing canonical Catcat on the open road, clear of the fence and footer. */
+.page-shows .shows-catcat-art { width: min(15%, 220px); right: 4.5%; bottom: calc(var(--terrain-height) * .065); }
+@media (max-width: 900px) { .page-shows .shows-catcat-art { width: 27%; right: 2%; bottom: calc(var(--terrain-height) * .035); } }
