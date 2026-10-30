@@ -117,10 +117,20 @@ track.listeners.keydown({ target: track, key: 'ArrowRight', preventDefault() { p
 assert.equal(prevented, true);
 assert.equal(track.scrollLeft, 218);
 
-for (const [fragment, file] of Object.entries({ '': 'index.html', shows: 'shows.html', about: 'about.html', clips: 'videos.html', acclaim: 'index.html', contact: 'contact.html' })) {
+for (const [fragment, file] of Object.entries({ '': '/', shows: '/shows/', about: '/about/', clips: '/videos/', acclaim: '/', contact: '/contact/' })) {
   let destination;
   const context = vm.createContext({ window: { location: { hash: fragment ? '#' + fragment : '', search: '?portrait=b', replace: value => { destination = value; } } } });
   vm.runInContext(source('legacy-entry.js'), context);
   assert.equal(destination, file + '?portrait=b');
 }
 console.log('PASS: absent DOM/data guards, real show sorting/date boundaries/expiry/tickets, pagination/bounds, invalid dates, clips, carousel buttons/keyboard, and legacy entries.');
+
+for (const [pathname, target] of [['/contact.html', '/contact/'], ['/reviews/', '/'], ['/index.html', '/'], ['/', '/']]) {
+  let redirected;
+  vm.runInNewContext(source('clean-url-redirect.js'), {
+    document: {documentElement: {dataset: {redirectTo: target}}},
+    window: {location: {pathname, search: '?from=old', hash: '#main', replace: value => redirected = value}}
+  });
+  assert.equal(redirected, pathname === target ? undefined : target + '?from=old#main');
+}
+console.log('PASS: clean URL redirects preserve queries/fragments and avoid root loops.');

@@ -26,4 +26,4 @@ node tools/check_behavior.cjs
 node design/videos-phase2/check-videos.cjs
 ```
 
-The five pages use file-based navigation, a shared 78px desktop header and flexible main area. Narrow/zoomed layouts allow document scrolling. All paths are relative and support a custom-domain root or project subdirectory.
+The five pages use directory-based navigation, a shared 78px desktop header and flexible main area. Narrow/zoomed layouts allow document scrolling. Public pages use clean directory URLs and assets use site-root paths for the existing custom domain. See [clean URL notes](docs/CLEAN-URLS.md).

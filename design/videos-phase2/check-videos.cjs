@@ -15,7 +15,7 @@ class Node {
 }
 function run(extra=0,load=true) {
   const nodes=Object.fromEntries(['#video-billboard','#video-links','#videos-prev','#videos-next','#videos-position','.videos-pagination'].map(k=>[k,new Node()]));
-  const context=vm.createContext({window:{},document:{querySelector:k=>nodes[k],createElement:t=>new Node(t)},URL,location:{href:'http://localhost/videos.html'}});
+  const context=vm.createContext({window:{},document:{querySelector:k=>nodes[k],createElement:t=>new Node(t)},URL,location:{href:'http://localhost/videos/'}});
   if(load) vm.runInContext(fs.readFileSync(path.join(root,'assets/js/site-data.js'),'utf8'),context);
   if(extra) for(let i=0;i<extra;i++) context.window.comedySiteData.clips.push({title:`Fixture ${i}`,thumbnailPath:'fixture.png',linkUrl:`https://example.com/test-${i}`});
   vm.runInContext(fs.readFileSync(path.join(root,'assets/js/videos.js'),'utf8'),context);

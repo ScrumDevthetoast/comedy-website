@@ -7,19 +7,22 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 errors = []
-PAGES = ['index.html', 'shows.html', 'about.html', 'videos.html', 'contact.html']
+PAGES = ['index.html', 'shows/index.html', 'about/index.html', 'videos/index.html', 'contact/index.html']
+ROUTES = ['/', '/shows/', '/about/', '/videos/', '/contact/']
 
 def check_path(reference, relative_to):
     parsed = urlsplit(reference)
     if parsed.scheme or parsed.netloc or not parsed.path:
         return
     if parsed.path.startswith('/'):
-        errors.append(f'Root-relative path breaks project sites: {reference}')
-        return
-    target = (relative_to / unquote(parsed.path)).resolve()
+        target = (ROOT / unquote(parsed.path).lstrip('/')).resolve()
+    else:
+        target = (relative_to / unquote(parsed.path)).resolve()
     if not target.is_relative_to(ROOT):
         errors.append(f'Path leaves the website: {reference}')
         return
+    if parsed.path.endswith('/') and not (target / 'index.html').is_file():
+        errors.append(f'Directory route has no index.html: {reference}')
     current = ROOT
     for part in target.relative_to(ROOT).parts:
         names = {item.name for item in current.iterdir()} if current.is_dir() else set()
@@ -61,27 +64,27 @@ class Page(HTMLParser):
         if tag == 'nav': self.in_nav = False
 
 # The portrait comparison is a local authoring aid, not required in the production payload.
-for filename in [*PAGES, 'index-sticker.html'] + (['portrait-review.html'] if (ROOT / 'portrait-review.html').exists() else []):
+for filename in [*PAGES, 'shows.html', 'about.html', 'videos.html', 'contact.html', 'reviews.html', 'reviews/index.html', 'index-sticker.html'] + (['portrait-review.html'] if (ROOT / 'portrait-review.html').exists() else []):
     file = ROOT / filename
     parser = Page(file)
     parser.feed(file.read_text(encoding='utf-8'))
     for anchor in parser.anchors:
         if anchor not in parser.ids: errors.append(f'Missing section anchor: {anchor}')
     if filename in PAGES:
-        if parser.navigation != PAGES: errors.append(f'Inconsistent real-file navigation: {filename}')
-        if parser.current != [filename]: errors.append(f'Incorrect active page: {filename}')
+        if parser.navigation != ROUTES: errors.append(f'Inconsistent real-file navigation: {filename}')
+        if parser.current != [ROUTES[PAGES.index(filename)]]: errors.append(f'Incorrect active page: {filename}')
         if parser.headings != 1: errors.append(f'Expected one main heading: {filename}')
         if parser.sections != 1: errors.append(f'Expected one distinct composition: {filename}')
         if parser.anchors != ['main']: errors.append(f'Unexpected section routing: {filename}')
 
-for file in [*ROOT.glob('*.html'), *ROOT.glob('assets/css/*.css'), *ROOT.glob('assets/js/*.js')]:
+for file in [*ROOT.rglob('*.html'), *ROOT.glob('assets/css/*.css'), *ROOT.glob('assets/js/*.js')]:
     text = file.read_text(encoding='utf-8')
     if ';base64,' in text: errors.append(f'Embedded Base64 asset: {file.relative_to(ROOT)}')
     if file.suffix == '.css':
         for reference in re.findall(r'url\(["\x27]([^"\x27]+)["\x27]\)', text):
             check_path(reference,file.parent)
     if file.suffix == '.js':
-        for reference in re.findall(r'["\x27`]((?:assets/)[^"\x27`]+)["\x27`]',text):
+        for reference in re.findall(r'["\x27`]((?:/?assets/)[^"\x27`]+)["\x27`]',text):
             if '${' not in reference: check_path(reference,ROOT)
 
 hashes = {}
@@ -95,4 +98,4 @@ for file in (ROOT / 'assets').rglob('*'):
 if not (ROOT / '.nojekyll').exists(): errors.append('Missing .nojekyll')
 if errors:
     raise SystemExit('\n'.join(errors))
-print('PASS: five standalone pages, real-file navigation, active pages, headings, skip links, relative paths/case, external CSS/JS, deduplicated assets, no Base64, .nojekyll.')
+print('PASS: five directory-routed pages, clean navigation, active pages, headings, skip links, production paths/case, external CSS/JS, deduplicated assets, no Base64, .nojekyll.')
