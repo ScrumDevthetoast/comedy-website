@@ -49,7 +49,8 @@
   .page-videos .section-title { font-size: clamp(64px, 14vw, 96px); margin-bottom: 36px; }
   .page-videos .videos-intro { max-width: 35ch; font-size: 16px; margin-bottom: 8px; }
   .page-videos .videos-scene { position: relative; inset: auto; width: calc(100% + 48px); margin: 25px -24px 0; height: auto; aspect-ratio: .85; }
-  .page-videos .drive-in-billboard { width: 100%; left: 0; top: 35px; bottom: auto; }
+  /* Ground the complete frame/video group beneath the existing foreground terrain. */
+  .page-videos .drive-in-billboard { width: 100%; left: 0; top: auto; bottom: 28%; }
   .page-videos .drive-in-sun { width: 55%; top: 0; left: 46%; }
   .page-videos .drive-in-terrain { width: 300%; max-width: none; left: -100%; }
   .page-videos .drive-in-perch { width: 36%; right: 0; bottom: 0; }
